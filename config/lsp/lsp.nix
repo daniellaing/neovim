@@ -7,6 +7,13 @@
         # Nix
         nixd.enable = true;
         rnix-lsp.enable = true;
+
+        # Rust
+        rust-analyzer = {
+          enable = true;
+          installCargo = true;
+          installRustc = true;
+        };
       };
     };
 
