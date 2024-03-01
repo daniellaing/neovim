@@ -14,6 +14,9 @@
           installCargo = true;
           installRustc = true;
         };
+
+        # Python
+        pylyzer.enable = true;
       };
     };
 
