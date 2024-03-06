@@ -17,6 +17,9 @@
 
         # Python
         pylyzer.enable = true;
+
+        # Other
+        slint-lsp.enable = true; # GUI library
       };
     };
 
