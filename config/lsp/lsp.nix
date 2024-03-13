@@ -6,7 +6,7 @@
 
         # Nix
         nixd.enable = true;
-        rnix-lsp.enable = true;
+        nil_ls.enable = true;
 
         # Rust
         rust-analyzer = {
