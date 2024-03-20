@@ -5,7 +5,7 @@
       servers = {
 
         # Nix
-        # nixd.enable = true;
+        nixd.enable = true;
         nil_ls.enable = true;
 
         # Rust
