@@ -1,9 +1,10 @@
 {pkgs, ...}: {
-  plugins.lsp.servers = {
-    nixd.enable = true;
-    nil_ls.enable = true;
+  plugins = {
+    lsp.servers = {
+      nixd.enable = true;
+      nil_ls.enable = true;
+    };
+    conform-nvim.formattersByFt.nix = ["alejandra"];
   };
-
-  plugins.conform-nvim.formattersByFt.nix = ["alejandra"];
   extraPackages = [pkgs.alejandra];
 }

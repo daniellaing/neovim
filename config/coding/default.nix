@@ -6,6 +6,9 @@
     ./lsp.nix
   ];
 
+  # ---   Linting   ---
+  plugins.lint.enable = true;
+
   # ---   Formatting   ---
   plugins.conform-nvim = {
     enable = true;

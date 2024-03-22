@@ -1,7 +1,9 @@
 {pkgs, ...}: {
-  # FIXME: Uncomment when mtshiba/pylyzer#78 resolves
-  # plugins.lsp.servers.pylyzer.enable = true;
-
-  plugins.conform-nvim.formattersByFt.python = ["black"];
-  extraPackages = [pkgs.black];
+  plugins = {
+    # FIXME: Uncomment when mtshiba/pylyzer#78 resolves
+    # lsp.servers.pylyzer.enable = true;
+    conform-nvim.formattersByFt.python = ["black"];
+    lint.lintersByFt.python = ["flake8"];
+  };
+  extraPackages = [pkgs.black pkgs.python312Packages.flake8];
 }
