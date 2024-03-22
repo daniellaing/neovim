@@ -3,15 +3,18 @@
     enable = true;
     settings = {
       sources = [
-        { name = "nvim_lsp"; }
-        { name = "luasnip"; }
-        { name = "nvim_lsp_signature_help"; }
-        { name = "nvim_lua"; }
-        { name = "path"; }
-        { name = "buffer"; keywordLength = 5; }
+        {name = "nvim_lsp";}
+        {name = "luasnip";}
+        {name = "nvim_lsp_signature_help";}
+        {name = "nvim_lua";}
+        {name = "path";}
+        {
+          name = "buffer";
+          keywordLength = 5;
+        }
       ];
       snippet.expand = "function(args) require('luasnip').lsp_expand(args.body) end";
-      experimental = { ghost_text = true; };
+      experimental = {ghost_text = true;};
       mapping = {
         "<C-N>" = "cmp.mapping.select_next_item()";
         "<C-P>" = "cmp.mapping.select_prev_item()";

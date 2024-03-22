@@ -1,8 +1,7 @@
 let
   tabwidth = 4;
   max_col = 120;
-in
-{
+in {
   config = {
     clipboard.providers.wl-copy.enable = true;
 
@@ -69,7 +68,7 @@ in
       textwidth = max_col;
 
       # Other
-      completeopt = [ "menu" "menuone" "noselect" "noinsert" ];
+      completeopt = ["menu" "menuone" "noselect" "noinsert"];
       encoding = "UTF-8";
       autowriteall = true;
     };

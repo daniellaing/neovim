@@ -4,11 +4,9 @@
     ./coding
     ./core
     ./editor
-    ./lsp
-    ./ui
 
     ./treesitter.nix
-    ./formatting.nix
+    ./ui.nix
   ];
 
   colorschemes.gruvbox = {
