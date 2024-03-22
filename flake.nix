@@ -67,6 +67,8 @@
             # Lets you run `nix run .` to start nixvim
             default = nvim;
           };
+
+          formatter = pkgs.alejandra;
         };
     };
 }
