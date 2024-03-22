@@ -11,11 +11,10 @@ in
       tex_flavour = "latex";
 
       # NETRW
-      netrw_liststyle = 3; # Tree style listing
+      netrw_liststyle = 0;
       netrw_winsize = 30;
       netrw_banner = 0;
     };
-
 
     options = {
       # Numbers
