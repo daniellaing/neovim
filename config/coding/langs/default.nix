@@ -1,8 +1,9 @@
 {
   imports = [
     ./lua.nix
+    ./markdown.nix
     ./nix.nix
-    ./rust.nix
     ./python.nix
+    ./rust.nix
   ];
 }
