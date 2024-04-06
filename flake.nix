@@ -21,6 +21,7 @@
   };
 
   outputs = {
+    self,
     nixvim,
     flake-parts,
     ...
@@ -52,6 +53,12 @@
           };
         };
       in {
+        _module.args.pkgs = import self.inputs.nixpkgs {
+          inherit system;
+          overlays = [self.overlays.default];
+          config.allowUnfree = true;
+        };
+
         checks = {
           # Run `nix flake check .` to verify that your config is not broken
           default = nixvimLib.check.mkTestDerivationFromNvim {
@@ -67,5 +74,8 @@
 
         formatter = pkgs.alejandra;
       };
+    }
+    // {
+      overlays = import ./overlays.nix inputs;
     };
 }
