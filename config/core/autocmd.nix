@@ -1,4 +1,4 @@
-{
+{helpers, ...}: {
   autoGroups = {
     dlaing = {
       clear = true;
@@ -14,7 +14,7 @@
     }
     {
       event = "TextYankPost";
-      callback.__raw = "function() vim.highlight.on_yank() end";
+      callback = helpers.mkRaw "function() vim.highlight.on_yank() end";
       group = "dlaing";
       desc = "Highlight text on yank";
     }

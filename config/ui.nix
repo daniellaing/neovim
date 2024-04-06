@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  helpers,
+  ...
+}: {
   # ---   Lua Line   ---
   plugins.lualine = {
     enable = true;
@@ -16,7 +20,7 @@
         {name = "location";}
       ];
       lualine_z = [
-        {name.__raw = ''function() return os.date("%H:%M:%S") end'';}
+        {name = helpers.mkRaw ''function() return os.date("%H:%M:%S") end'';}
       ];
     };
   };
