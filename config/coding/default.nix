@@ -22,17 +22,19 @@
   plugins = {
     ts-context-commentstring.enable = true;
 
-    comment-nvim = {
+    comment = {
       enable = true;
-      preHook = "require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()";
+      settings.pre_hook = "require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook()";
     };
   };
 
   # ---   Pairs   ---
   plugins.nvim-autopairs = {
     enable = true;
-    checkTs = true;
-    disableInMacro = true;
+    settings = {
+      check_ts = true;
+      disable_in_macro = true;
+    };
   };
 
   # ---   Snippets   ---

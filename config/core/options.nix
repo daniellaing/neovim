@@ -2,75 +2,73 @@ let
   tabwidth = 4;
   max_col = 120;
 in {
-  config = {
-    clipboard.providers.wl-copy.enable = true;
+  clipboard.providers.wl-copy.enable = true;
 
-    globals = {
-      mapleader = " ";
-      tex_flavour = "latex";
+  globals = {
+    mapleader = " ";
+    tex_flavour = "latex";
 
-      # NETRW
-      netrw_liststyle = 0;
-      netrw_winsize = 30;
-      netrw_banner = 0;
-    };
+    # NETRW
+    netrw_liststyle = 0;
+    netrw_winsize = 30;
+    netrw_banner = 0;
+  };
 
-    options = {
-      # Numbers
-      number = true;
-      relativenumber = true;
+  opts = {
+    # Numbers
+    number = true;
+    relativenumber = true;
 
-      # Tabs
-      tabstop = tabwidth;
-      softtabstop = tabwidth;
-      shiftwidth = 0; # 0 sets to same as tabstop
-      expandtab = true;
-      smartindent = true;
+    # Tabs
+    tabstop = tabwidth;
+    softtabstop = tabwidth;
+    shiftwidth = 0; # 0 sets to same as tabstop
+    expandtab = true;
+    smartindent = true;
 
-      # Search
-      hlsearch = false; # Searches don't stay highlighted
-      incsearch = true; # Show search matches so far
-      inccommand = "split"; # Show effects of :s
-      ignorecase = true; # Ignore case while searching
-      smartcase = true; # Become case sensitive when a capital is searched
+    # Search
+    hlsearch = false; # Searches don't stay highlighted
+    incsearch = true; # Show search matches so far
+    inccommand = "split"; # Show effects of :s
+    ignorecase = true; # Ignore case while searching
+    smartcase = true; # Become case sensitive when a capital is searched
 
-      # Splits
-      splitright = true;
+    # Splits
+    splitright = true;
 
-      # Swap and Undo files
-      # TODO: Set undodir to .local/vim/undodir
-      swapfile = false;
-      undofile = true;
+    # Swap and Undo files
+    # TODO: Set undodir to .local/vim/undodir
+    swapfile = false;
+    undofile = true;
 
-      # Appearance
-      scrolloff = 5;
-      list = false;
-      listchars = "extends:›,precedes:‹,nbsp:␣,trail:·,eol:¬,tab:->";
-      termguicolors = true;
-      cursorline = true;
-      cursorcolumn = true;
-      foldcolumn = "auto";
-      signcolumn = "yes";
-      conceallevel = 2;
-      wrap = false;
+    # Appearance
+    scrolloff = 5;
+    list = false;
+    listchars = "extends:›,precedes:‹,nbsp:␣,trail:·,eol:¬,tab:->";
+    termguicolors = true;
+    cursorline = true;
+    cursorcolumn = true;
+    foldcolumn = "auto";
+    signcolumn = "yes";
+    conceallevel = 2;
+    wrap = false;
 
-      # Maps
-      timeoutlen = 400;
-      ttimeoutlen = 0;
+    # Maps
+    timeoutlen = 400;
+    ttimeoutlen = 0;
 
-      # Spelling
-      spell = true;
-      spelllang = "en_gb";
+    # Spelling
+    spell = true;
+    spelllang = "en_gb";
 
-      # Formatting
-      # TODO: Use formatprg and UNIX utility fmt
-      colorcolumn = builtins.toString max_col;
-      textwidth = max_col;
+    # Formatting
+    # TODO: Use formatprg and UNIX utility fmt
+    colorcolumn = builtins.toString max_col;
+    textwidth = max_col;
 
-      # Other
-      completeopt = ["menu" "menuone" "noselect" "noinsert"];
-      encoding = "UTF-8";
-      autowriteall = true;
-    };
+    # Other
+    completeopt = ["menu" "menuone" "noselect" "noinsert"];
+    encoding = "UTF-8";
+    autowriteall = true;
   };
 }

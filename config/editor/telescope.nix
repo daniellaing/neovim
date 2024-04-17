@@ -4,8 +4,10 @@
     extensions = {
       fzf-native = {
         enable = true;
-        caseMode = "smart_case";
-        fuzzy = true;
+        settings = {
+          caseMode = "smart_case";
+          fuzzy = true;
+        };
       };
     };
   };
