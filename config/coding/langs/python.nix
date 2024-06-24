@@ -1,6 +1,6 @@
 {pkgs, ...}: {
   plugins = {
-    lsp.servers.pylyzer.enable = true;
+    lsp.servers.pyright.enable = true;
     conform-nvim.formattersByFt.python = ["black"];
     lint.lintersByFt.python = ["flake8"];
   };

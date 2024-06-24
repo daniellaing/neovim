@@ -18,9 +18,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Pylyzer fix
-    rust-overlay.url = "github:oxalica/rust-overlay";
   };
 
   outputs = {
