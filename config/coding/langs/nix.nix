@@ -2,7 +2,7 @@
   plugins = {
     lsp.servers = {
       nixd.enable = true;
-      nil_ls.enable = true;
+      nil-ls.enable = true;
     };
     conform-nvim.formattersByFt.nix = ["alejandra"];
   };

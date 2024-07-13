@@ -33,8 +33,7 @@
   keymaps = [
     {
       key = "<Leader>dn";
-      action = "function() require('notify').dismiss({ silent = true, pending = true }) end";
-      lua = true;
+      action = helpers.mkRaw "function() require('notify').dismiss({ silent = true, pending = true }) end";
       options.desc = "Dismiss all notifications";
     }
   ];

@@ -1,4 +1,4 @@
-{
+{helpers, ...}: {
   keymaps = [
     # Buffer navigation
     {
@@ -18,8 +18,7 @@
     }
     {
       key = "bx";
-      action = "function() vim.cmd.bdelete() end";
-      lua = true;
+      action = helpers.mkRaw "function() vim.cmd.bdelete() end";
       options = {desc = "Save and close buffer";};
     }
 
