@@ -2,9 +2,11 @@
   plugins = {
     treesitter = {
       enable = true;
-      ensureInstalled = "all";
-      indent = true;
       nixvimInjections = true;
+      settings = {
+        ensure_installed = "all";
+        indent.enable = true;
+      };
     };
     treesitter-textobjects.enable = true;
   };
