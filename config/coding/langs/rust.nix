@@ -1,11 +1,12 @@
 {pkgs, ...}: {
   plugins = {
-      lsp.servers.rust-analyzer = {
-    enable = true;
-    installCargo = true;
-    installRustc = true;
-  };
+    lsp.servers.rust_analyzer = {
+      enable = true;
+      installCargo = true;
+      installRustc = true;
+    };
 
-  conform-nvim.formattersByFt.rust = ["rustfmt"];};
+    conform-nvim.settings.formatters_by_ft.rust = ["rustfmt"];
+  };
   extraPackages = [pkgs.rustfmt];
 }

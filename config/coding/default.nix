@@ -12,7 +12,7 @@
   # ---   Formatting   ---
   plugins.conform-nvim = {
     enable = true;
-    formatOnSave = {
+    settings.format_on_save = {
       lspFallback = true;
       timeoutMs = 500;
     };
@@ -49,7 +49,7 @@
   ];
 
   # ---   Surround   ---
-  plugins.surround = {
+  plugins.vim-surround = {
     enable = true;
   };
 }

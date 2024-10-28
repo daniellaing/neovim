@@ -6,22 +6,20 @@
   # ---   Lua Line   ---
   plugins.lualine = {
     enable = true;
-    sections = {
+    settings.sections = {
       lualine_c = [
-        {name = "diagnostics";}
-        {name = "filetype";}
-        {name = "filename";}
+        "diagnostics"
+        "filetype"
+        "filename"
       ];
       lualine_x = [
-        {name = "diff";}
+        "diff"
       ];
       lualine_y = [
-        {name = "progress";}
-        {name = "location";}
+        "progress"
+        "location"
       ];
-      lualine_z = [
-        {name = helpers.mkRaw ''function() return os.date("%H:%M:%S") end'';}
-      ];
+      lualine_z = [{__unkeyed-1 = helpers.mkRaw ''function() return os.date("%H:%M:%S") end'';}];
     };
   };
 

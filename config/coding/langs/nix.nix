@@ -2,9 +2,9 @@
   plugins = {
     lsp.servers = {
       nixd.enable = true;
-      nil-ls.enable = true;
+      nil_ls.enable = true;
     };
-    conform-nvim.formattersByFt.nix = ["alejandra"];
+    conform-nvim.settings.formatters_by_ft.nix = ["alejandra"];
   };
   extraPackages = [pkgs.alejandra];
 }
