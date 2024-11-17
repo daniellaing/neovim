@@ -5,6 +5,7 @@
     ./markdown.nix
     ./nix.nix
     ./python.nix
+    ./R.nix
     ./rust.nix
   ];
 }
