@@ -1,5 +1,6 @@
 {
   imports = [
+    ./java.nix
     ./latex.nix
     ./lua.nix
     ./markdown.nix
