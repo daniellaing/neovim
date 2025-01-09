@@ -8,5 +8,6 @@
     ./python.nix
     ./R.nix
     ./rust.nix
+    ./xml.nix
   ];
 }
