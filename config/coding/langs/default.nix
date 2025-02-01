@@ -1,5 +1,6 @@
 {
   imports = [
+    ./go.nix
     ./java.nix
     ./latex.nix
     ./lua.nix
