@@ -7,7 +7,7 @@
     ./markdown.nix
     ./nix.nix
     ./python.nix
-    ./R.nix
+    # ./R.nix
     ./rust.nix
     ./xml.nix
   ];
