@@ -18,5 +18,11 @@
       group = "dlaing";
       desc = "Highlight text on yank";
     }
+    {
+      event = "VimEnter";
+      command = "cd %:p:h";
+      group = "dlaing";
+      desc = "Automatically change cwd to the one vim was opened in";
+    }
   ];
 }
