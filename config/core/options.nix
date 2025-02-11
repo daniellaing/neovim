@@ -49,6 +49,7 @@ in {
     cursorline = true;
     cursorcolumn = true;
     foldcolumn = "auto";
+    foldlevelstart = 2;
     signcolumn = "yes";
     conceallevel = 2;
     wrap = false;
