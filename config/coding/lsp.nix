@@ -1,7 +1,7 @@
 {
   plugins = {
     lsp.enable = true;
-    lsp-format.enable = true;
+    # lsp-format.enable = true;
     lsp-lines.enable = true;
     lspkind.enable = true;
   };
