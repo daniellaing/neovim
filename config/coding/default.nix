@@ -12,9 +12,9 @@
   # ---   Formatting   ---
   plugins.conform-nvim = {
     enable = true;
-    settings.format_on_save = {
+    settings.format_after_save = {
       lspFallback = true;
-      timeoutMs = 500;
+      # timeoutMs = 500;
     };
   };
 
