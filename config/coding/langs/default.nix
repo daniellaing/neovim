@@ -10,5 +10,6 @@
     # ./R.nix
     ./rust.nix
     ./xml.nix
+    ./zig.nix
   ];
 }
