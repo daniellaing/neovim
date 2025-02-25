@@ -49,7 +49,7 @@ in {
     cursorline = true;
     cursorcolumn = true;
     foldcolumn = "auto";
-    foldlevelstart = 2;
+    foldlevelstart = 99; # Start with all folds open
     signcolumn = "yes";
     conceallevel = 2;
     wrap = false;
