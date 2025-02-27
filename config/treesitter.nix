@@ -2,12 +2,21 @@
   plugins = {
     treesitter = {
       enable = true;
-      nixvimInjections = true;
+      folding = true;
       settings = {
-        ensure_installed = "all";
         indent.enable = true;
+        highlight.enable = true;
+        incremental_selection.enable = true;
       };
     };
-    treesitter-textobjects.enable = true;
+
+    # Additional treesitter based things
+    treesitter-context.enable = true;
+    treesitter-refactor = {
+      # Possible coincidence with lsp saga
+      enable = true;
+      highlightDefinitions.enable = true;
+    };
+    treesitter-textobjects.enable = true; # Pretty sure this does nothing without keymaps definied
   };
 }
