@@ -24,4 +24,7 @@
 
   # ---   Which Key   ---
   plugins.which-key.enable = true;
+
+  # ---   Bullets   ---
+  plugins.bullets.enable = true;
 }
