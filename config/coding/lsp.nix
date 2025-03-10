@@ -14,11 +14,12 @@
   # ---   Keymaps   ---
   keymaps = [
     {
-      key = "<A-d";
+      key = "<M-d>";
       action = "<CMD>Lspsaga term_toggle<Enter>";
       options.desc = "Toggle a terminal";
     }
     {
+      mode = ["n" "s" "o"];
       key = "K";
       action = "<CMD>Lspsaga hover_doc ++keep<Enter>";
       options.desc = "Show documentation";
