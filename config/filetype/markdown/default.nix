@@ -9,4 +9,6 @@ in {
     };
   };
   extraPackages = with pkgs; [cbfmt mdf];
+
+  extraFiles."luasnippets/markdown.lua".source = ./snippets.lua;
 }

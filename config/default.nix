@@ -1,14 +1,15 @@
-{
+{lib, ...}: {
   # Import all your configuration modules here
-  imports = [
-    ./coding
-    ./core
-    ./editor
-    ./filetype
+  imports =
+    [
+      ./coding
+      ./core
+      ./editor
 
-    ./treesitter.nix
-    ./ui.nix
-  ];
+      ./treesitter.nix
+      ./ui.nix
+    ]
+    ++ lib.filter (n: lib.strings.hasSuffix ".nix" n) (lib.filesystem.listFilesRecursive ./filetype);
 
   colorschemes.gruvbox = {
     enable = true;
