@@ -4,6 +4,7 @@
     ./coding
     ./core
     ./editor
+    ./filetype
 
     ./treesitter.nix
     ./ui.nix

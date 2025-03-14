@@ -1,7 +1,5 @@
 {pkgs, ...}: {
   imports = [
-    ./langs
-
     ./completion.nix
     ./lsp.nix
   ];
@@ -83,8 +81,6 @@
   extraPlugins = with pkgs; [
     vimPlugins.friendly-snippets
   ];
-
-  extraFiles."luasnippets/all.lua".source = ../../luasnippets/all.lua;
 
   # ---   Surround   ---
   plugins.vim-surround = {
