@@ -42,5 +42,23 @@
       group = "dlaing";
       desc = "Automatically change cwd to the one vim was opened in";
     }
+
+    {
+      event = "TermOpen";
+      group = "dlaing";
+      desc = "Clean up built in terminal";
+      callback = helpers.mkRaw ''
+        function()
+          vim.wo.spell = false
+          vim.wo.cursorline = false
+          vim.wo.cursorcolumn = false
+          vim.wo.number = false
+          vim.wo.relativenumber = false
+          vim.wo.signcolumn = "no"
+          vim.bo.bufhidden = "wipe"
+          vim.cmd.startinsert()
+        end
+      '';
+    }
   ];
 }

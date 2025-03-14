@@ -77,11 +77,14 @@
     enable = true;
     fromLua = [{}];
     fromVscode = [{}];
+    settings.enable_autosnippets = true;
   };
 
   extraPlugins = with pkgs; [
     vimPlugins.friendly-snippets
   ];
+
+  extraFiles."luasnippets/all.lua".source = ../../luasnippets/all.lua;
 
   # ---   Surround   ---
   plugins.vim-surround = {
