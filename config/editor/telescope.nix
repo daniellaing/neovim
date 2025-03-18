@@ -278,5 +278,20 @@
         desc = "Search workspace symbols";
       };
     }
+
+    {
+      mode = "n";
+      key = "<Leader>h";
+      action = helpers.mkRaw ''
+        function()
+            vim.api.nvim_exec_autocmds("User", { pattern = "ColorSchemeLoad" })
+            require("telescope.builtin").colorscheme()
+        end
+      '';
+      options = {
+        silent = true;
+        desc = "Change colour scheme";
+      };
+    }
   ];
 }
