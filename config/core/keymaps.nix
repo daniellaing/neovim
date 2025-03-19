@@ -69,7 +69,7 @@
     {
       mode = ["n"];
       key = "S";
-      action = "<CMD>%s//g<Left><Left>";
+      action = "<CMD>%s//g<Left><Left><Enter>";
       options.desc = "Substitute in whole buffer with S";
     }
 

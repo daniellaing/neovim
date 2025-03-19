@@ -1,6 +1,7 @@
 {pkgs, ...}: {
   imports = [
     ./completion.nix
+    ./dap.nix
     ./lsp.nix
   ];
 
