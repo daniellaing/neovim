@@ -8,14 +8,11 @@
     java-test = "${pkgs.vscode-extensions.vscjava.vscode-java-test}/share/vscode/extensions/vscjava.vscode-java-test/server";
   in ''
     _M.jdtls = {}
-    _M.jdtls.bundles = {}
+    _M.jdtls.bundles = {
+        vim.fn.glob("${java-debug}" .. "/*.jar"),
+    }
 
-    local java_debug_bundle = vim.split(vim.fn.glob("${java-debug}" .. "/*.jar"), "\n")
     local java_test_bundle = vim.split(vim.fn.glob("${java-test}" .. "/*.jar", true), "\n")
-
-    if java_debug_bundle[1] ~= "" then
-        vim.list_extend(_M.jdtls.bundles, java_debug_bundle)
-    end
 
     if java_test_bundle[1] ~= "" then
         vim.list_extend(_M.jdtls.bundles, java_test_bundle)
@@ -24,13 +21,13 @@
 
   plugins = {
     # lsp.servers.jdtls.enable = true;
-    # conform-nvim.settings.formatters_by_ft.java = ["google-java-format"];
+    conform-nvim.settings.formatters_by_ft.java = ["google-java-format"];
     # lint.lintersByFt.java = ["checkstyle"];
 
     nvim-jdtls = {
       enable = true;
       configuration = helpers.mkRaw ''vim.fn.stdpath 'cache' .. "/jdtls/config"'';
-      data = helpers.mkRaw ''vim.fn.stdpath 'cache' .. '/jdtls/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ';t')'';
+      data = helpers.mkRaw ''vim.fn.stdpath 'cache' .. '/jdtls/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':t')'';
       initOptions.bundles =
         helpers.mkRaw ''_M.jdtls.bundles'';
       rootDir = helpers.mkRaw ''
