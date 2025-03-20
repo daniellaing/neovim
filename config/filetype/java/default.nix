@@ -33,6 +33,9 @@
       data = helpers.mkRaw ''vim.fn.stdpath 'cache' .. '/jdtls/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ';t')'';
       initOptions.bundles =
         helpers.mkRaw ''_M.jdtls.bundles'';
+      rootDir = helpers.mkRaw ''
+        vim.fs.root(0, { ".git", "mvnw", "gradelw", "devshell.toml"})
+      '';
     };
 
     dap.configurations.java = [
