@@ -1,6 +1,9 @@
 {helpers, ...}: {
   plugins = {
-    lsp.enable = true;
+    lsp = {
+      enable = true;
+      inlayHints = true;
+    };
     # lsp-format.enable = true;
     lsp-lines.enable = true;
     lspkind.enable = true;

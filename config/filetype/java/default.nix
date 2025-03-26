@@ -24,15 +24,15 @@
     conform-nvim.settings.formatters_by_ft.java = ["google-java-format"];
     lint.lintersByFt.java = ["checkstyle"];
 
-    nvim-jdtls = {
+    nvim-jdtls = let
+      rootDirCmd = ''vim.fs.root(0, { ".git", "mvnw", "gradelw", "devshell.toml"})'';
+    in {
       enable = true;
       configuration = helpers.mkRaw ''vim.fn.stdpath 'cache' .. "/jdtls/config"'';
-      data = helpers.mkRaw ''vim.fn.stdpath 'cache' .. '/jdtls/' .. vim.fn.fnamemodify(vim.fn.getcwd(), ':t')'';
+      data = helpers.mkRaw ''vim.fn.stdpath 'cache' .. '/jdtls/' .. vim.fn.fnamemodify(${rootDirCmd}, ':t')'';
       initOptions.bundles =
         helpers.mkRaw ''_M.jdtls.bundles'';
-      rootDir = helpers.mkRaw ''
-        vim.fs.root(0, { ".git", "mvnw", "gradelw", "devshell.toml"})
-      '';
+      rootDir = helpers.mkRaw rootDirCmd;
     };
 
     dap.configurations.java = [
