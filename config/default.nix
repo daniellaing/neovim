@@ -11,4 +11,17 @@
       ./ui.nix
     ]
     ++ lib.filter (n: lib.strings.hasSuffix ".nix" n) (lib.filesystem.listFilesRecursive ./filetype);
+
+  performance = {
+    byteCompileLua = {
+      enable = true;
+      nvimRuntime = true;
+      plugins = true;
+    };
+
+    # combinePlugins = {
+    #   enable = true;
+    #   standalonePlugins = [ ];
+    # };
+  };
 }
