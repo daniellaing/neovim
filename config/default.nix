@@ -7,6 +7,7 @@
       ./editor
 
       ./colorschemes.nix
+      ./dependencies.nix
       ./treesitter.nix
       ./ui.nix
     ]
