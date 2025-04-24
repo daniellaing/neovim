@@ -24,7 +24,7 @@
 
         init_options.bundles =
           helpers.mkRaw ''_M.jdtls.bundles'';
-        rootDir = helpers.mkRaw rootDirCmd;
+        root_dir = helpers.mkRaw rootDirCmd;
       };
       luaConfig.pre = let
         java-debug = "${pkgs.vscode-extensions.vscjava.vscode-java-debug}/share/vscode/extensions/vscjava.vscode-java-debug/server";
