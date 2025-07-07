@@ -5,17 +5,17 @@
 }: {
   plugins = {
     lsp.servers.lemminx.enable = true;
-    conform-nvim.settings.formatters_by_ft.xml = ["xmlformat"];
+    # conform-nvim.settings.formatters_by_ft.xml = [];
     #lint.lintersByFt.xml = [];
   };
-  extraPackages = [pkgs.xmlformat];
+  # extraPackages = [];
 
   autoCmd = [
     {
       event = "FileType";
       desc = "Set tab size to 1 for xml files";
       group = "dlaing";
-      pattern = "xml";
+      pattern = ["xml" "xsd"];
       callback = helpers.mkRaw ''
         function()
             vim.opt_local.tabstop = 1
