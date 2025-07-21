@@ -33,7 +33,7 @@ jobs:
         run: nix flake check
 
       - name: Build flake
-        run: nix flake build
+        run: nix build
 
       - name: Push changes
         run: git push -u origin update-${{ github.run_id }}
