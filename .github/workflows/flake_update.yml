@@ -1,0 +1,46 @@
+name: Update flake inputs
+on:
+  workflow_dispatch:
+
+jobs:
+  update_flake:
+    runs-on: ubuntu-latest
+    permissions: write-all
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v4
+
+      - name: Nix cache
+        uses: DeterminateSystems/magic-nix-cache-action@v13
+        with:
+          use-gha-cache: enabled
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+
+      - name: Set up git
+        run: |
+          git config user.email "daniel@daniellaing.com"
+          git config user.name "Daniel Laing"
+
+      - name: Switch branch
+        run: git checkout -b update-${{ github.run_id }}
+
+      - name: Update flake
+        run: nix flake update --commit-lock-file
+
+      - name: Check flake
+        run: nix flake check
+
+      - name: Build flake
+        run: nix flake build
+
+      - name: Push changes
+        run: git push -u origin update-${{ github.run_id }}
+
+      - name: Create and merge PR
+        run: |
+          PR=$(gh pr create --assignee daniellaing --base master --body "Automatic flake update on $(date -I)" --fill --label bot --title "Auto update $(date -I)")
+          gh pr merge $PR --merge --delete-branch
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
