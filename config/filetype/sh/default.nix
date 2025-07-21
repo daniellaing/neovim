@@ -1,6 +1,6 @@
 {pkgs, ...}: {
+  lsp.servers.bashls.enable = true;
   plugins = {
-    lsp.servers.bashls.enable = true;
     conform-nvim.settings.formatters_by_ft.sh = ["shfmt"];
     lint.lintersByFt.sh = ["shellcheck"];
   };

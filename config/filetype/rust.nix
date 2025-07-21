@@ -5,7 +5,6 @@
       installCargo = true;
       installRustc = true;
     };
-
     conform-nvim.settings.formatters_by_ft.rust = ["rustfmt"];
   };
   extraPackages = [pkgs.rustfmt];

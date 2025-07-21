@@ -1,5 +1,3 @@
 {
-  plugins = {
-    lsp.servers.zls.enable = true;
-  };
+  lsp.servers.zls.enable = true;
 }
