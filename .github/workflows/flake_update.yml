@@ -63,12 +63,13 @@ jobs:
         if: steps.diff.outputs.count
         run: nix build
 
-      - name: Create PR
+      - name: Create and merge PR
         if: steps.diff.outputs.count
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           echo "Pushing to branch $pr_branch"
           git push --force --set-upstream origin "$pr_branch"
-          gh pr create --base "$base_branch" --title "Automatic flake update $(date -I)"
+          PR=$(gh pr create --base "$base_branch" --title "Auto update $(date -I)" --body "Automatic flake update on $(date -I)" --label bot --assignee daniellaing)
+          gh pr merge "$PR" --merge --delete-branch
 
