@@ -1,6 +1,8 @@
 name: Update flake inputs
 on:
   workflow_dispatch:
+  schedule:
+    - cron: "0 2 * * 1" # 2am every Monday
 
 permissions:
   contents: write
@@ -70,6 +72,16 @@ jobs:
         run: |
           echo "Pushing to branch $pr_branch"
           git push --force --set-upstream origin "$pr_branch"
-          PR=$(gh pr create --base "$base_branch" --title "Auto update $(date -I)" --body "Automatic flake update on $(date -I)" --label bot --assignee daniellaing)
+
+          echo "Writing PR body file"
+          (
+            echo "# Automatic flake update on $(date -I)"
+            echo
+            echo '```'
+            git show --no-patch --format=%b
+            echo '```'
+          ) > body.md
+
+          PR=$(gh pr create --base "$base_branch" --title "Auto update $(date -I)" --body-file body.md --label bot --assignee daniellaing)
           gh pr merge "$PR" --merge --delete-branch
 
