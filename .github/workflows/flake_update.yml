@@ -16,8 +16,8 @@ jobs:
     steps:
       - name: Set up git
         run: |
-          git config user.email "daniel@daniellaing.com"
-          git config user.name "Daniel Laing"
+          git config --global user.email "daniel@daniellaing.com"
+          git config --global user.name "Daniel Laing"
 
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout repository
