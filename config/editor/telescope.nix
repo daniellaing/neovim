@@ -4,7 +4,7 @@
   plugins.telescope = {
     enable = true;
     extensions = {
-      fzf-native = {
+      fzy-native = {
         enable = true;
         settings = {
           caseMode = "smart_case";
