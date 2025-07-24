@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: {
-  # lsp.servers.jdtls.enable = true;
   plugins = {
+    # lsp.servers.jdtls.enable = true;
     conform-nvim.settings.formatters_by_ft.java = ["google-java-format"];
     lint.lintersByFt.java = ["checkstyle"];
 
