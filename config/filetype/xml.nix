@@ -1,14 +1,14 @@
 {
   pkgs,
+  lib,
   helpers,
   ...
 }: {
   plugins = {
     lsp.servers.lemminx.enable = true;
-    # conform-nvim.settings.formatters_by_ft.xml = [];
-    #lint.lintersByFt.xml = [];
+    conform-nvim.settings.formatters_by_ft = lib.genAttrs ["xml" "xsd"] (_: ["xmllint"]);
   };
-  # extraPackages = [];
+  extraPackages = [pkgs.libxml2];
 
   autoCmd = [
     {
