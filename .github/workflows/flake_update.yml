@@ -16,11 +16,6 @@ jobs:
       base_branch: ${{ github.ref_name }}
 
     steps:
-      - name: Set up git
-        run: |
-          git config --global user.email "daniel@daniellaing.com"
-          git config --global user.name "Daniel Laing"
-
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -83,5 +78,5 @@ jobs:
           ) > body.md
 
           PR=$(gh pr create --base "$base_branch" --title "Auto update $(date -I)" --body-file body.md --label bot --assignee daniellaing)
-          gh pr merge "$PR" --merge --delete-branch
+          gh pr merge "$PR" --rebase --delete-branch
 
