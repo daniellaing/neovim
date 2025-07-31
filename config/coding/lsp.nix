@@ -1,4 +1,4 @@
-{helpers, ...}: {
+{lib, ...}: {
   lsp = {
     inlayHints.enable = true;
     servers."*".settings = {
@@ -17,113 +17,93 @@
     lspkind.enable = true;
   };
 
-  # ---   Lsp Saga   ---
-  plugins.lspsaga = {
-    enable = true;
-  };
-
   # ---   Keymaps   ---
-  keymaps = [
-    {
-      key = "<M-d>";
-      action = "<CMD>Lspsaga term_toggle<Enter>";
-      options.desc = "Toggle a terminal";
-    }
+  lsp.keymaps = [
+    # TODO: <M-d> opens floating terminal
     {
       mode = ["n" "s" "o"];
       key = "K";
-      action = "<CMD>Lspsaga hover_doc ++keep<Enter>";
+      action = lib.mkLuaInline ''function() vim.lsp.buf.hover({border="rounded", title = " hover "}) end'';
       options.desc = "Show documentation";
     }
     {
       key = "gd";
-      action = "<CMD>Lspsaga peek_definition<Enter>";
-      options.desc = "Peek definition";
-    }
-    {
-      key = "gD";
-      action = "<CMD>Lspsaga goto_definition<Enter>";
+      lspBufAction = "definition";
       options.desc = "Go to definition";
     }
     {
-      key = "gy";
-      action = "<CMD>Lspsaga peek_type_definition<Enter>";
-      options.desc = "Peek type definition";
+      key = "gD";
+      lspBufAction = "declaration";
+      options.desc = "Go to declaration";
     }
     {
-      key = "gY";
-      action = "<CMD>Lspsaga goto_type_definition<Enter>";
+      key = "gy";
+      lspBufAction = "type_definition";
       options.desc = "Go to type definition";
     }
     {
       key = "gr";
-      action = "<CMD>Lspsaga finder ref<Enter>";
+      lspBufAction = "references";
       options.desc = "Find references";
     }
     {
       key = "gI";
-      action = "<CMD>Lspsaga finder imp<Enter>";
+      lspBufAction = "implementation";
       options.desc = "Find implementations";
     }
-
     {
       key = "<Leader>ca";
-      action = "<CMD>Lspsaga code_action<Enter>";
+      lspBufAction = "code_action";
       options.desc = "Code action";
     }
     {
       key = "<Leader>cr";
-      action = "<CMD>Lspsaga rename auto_save = true ++project<Enter>";
+      lspBufAction = "rename";
       options.desc = "Rename symbol";
     }
     {
       key = "<Leader>ci";
-      action = "<CMD>Lspsaga incoming_calls<Enter>";
+      lspBufAction = "incoming_calls";
       options.desc = "Show incoming calls";
     }
     {
       key = "<Leader>co";
-      action = "<CMD>Lspsaga outgoing_calls<Enter>";
+      lspBufAction = "outgoing_calls";
       options.desc = "Show outgoing calls";
     }
     {
-      key = "<Leader>cl";
-      action = "<CMD>Lspsaga outline<Enter>";
-      options.desc = "Show code outline";
-    }
-    {
       key = "<Leader>d";
-      action = "<CMD>Lspsaga show_line_diagnostics<Enter>";
+      action = lib.mkLuaInline ''function() vim.diagnostic.open_float({border="rounded"}) end'';
       options.desc = "Show diagnostics on current line";
     }
     {
       key = "]d";
-      action = "<CMD>Lspsaga diagnostic_jump_next<Enter>";
+      action = lib.mkLuaInline ''function() vim.diagnostic.jump({count=1, float={border="rounded"}}) end'';
       options.desc = "Jump to next diagnostic";
     }
     {
       key = "[d";
-      action = "<CMD>Lspsaga diagnostic_jump_prev<Enter>";
+      action = lib.mkLuaInline ''function() vim.diagnostic.jump({count=-1, float={border="rounded"}}) end'';
       options.desc = "Jump to previous diagnostic";
     }
     {
       key = "]w";
-      action = helpers.mkRaw ''function() require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.WARNING }) end'';
+      action = lib.mkLuaInline ''function() vim.diagnostic.jump({count=1, severity=vim.diagnostic.severity.WARNING, float={border="rounded"}}) end'';
       options.desc = "Jump to next warning";
     }
     {
       key = "[w";
-      action = helpers.mkRaw ''function() require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.WARNING }) end'';
+      action = lib.mkLuaInline ''function() vim.diagnostic.jump({count=-1, severity=vim.diagnostic.severity.WARNING, float={border="rounded"}}) end'';
       options.desc = "Jump to previous warning";
     }
     {
       key = "]e";
-      action = helpers.mkRaw ''function() require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR }) end'';
+      action = lib.mkLuaInline ''function() vim.diagnostic.jump({count=1, severity=vim.diagnostic.severity.ERROR, float={border="rounded"}}) end'';
       options.desc = "Jump to next error";
     }
     {
       key = "[e";
-      action = helpers.mkRaw ''function() require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR }) end'';
+      action = lib.mkLuaInline ''function() vim.diagnostic.jump({count=-1, severity=vim.diagnostic.severity.ERROR, float={border="rounded"}}) end'';
       options.desc = "Jump to previous error";
     }
   ];
