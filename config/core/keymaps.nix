@@ -59,6 +59,13 @@
       options.desc = "Delete last word";
     }
 
+    {
+      key = "DD";
+      mode = ["n"];
+      action = "0d$";
+      options.desc = "Clear line";
+    }
+
     # Better capital letters
     {
       mode = ["n"];
