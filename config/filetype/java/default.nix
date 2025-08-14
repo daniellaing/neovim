@@ -10,7 +10,14 @@
     lint.lintersByFt.java = ["checkstyle"];
 
     jdtls = let
+      inherit (pkgs.lib) hasSuffix;
       rootDirCmd = ''vim.fs.root(0, { ".git", "mvnw", "gradelw", "devshell.toml"})'';
+      java-debug = "${pkgs.vscode-extensions.vscjava.vscode-java-debug}/share/vscode/extensions/vscjava.vscode-java-debug";
+      java-test = "${pkgs.vscode-extensions.vscjava.vscode-java-test}/share/vscode/extensions/vscjava.vscode-java-test";
+      getJars = plugin: map (jar: "${plugin}/server/${jar}") (builtins.attrNames (builtins.readDir "${plugin}/server"));
+      bundles = builtins.filter (jar:
+        !(hasSuffix "com.microsoft.java.test.runner-jar-with-dependencies.jar" jar
+          || hasSuffix "jacocoagent.jar" jar)) (builtins.concatLists [(getJars java-debug) (getJars java-test)]);
     in {
       enable = true;
       settings = {
@@ -23,24 +30,10 @@
         ];
 
         init_options.bundles =
-          helpers.mkRaw ''_M.jdtls.bundles'';
+          helpers.mkRaw "{${builtins.concatStringsSep "," (builtins.map (b: "\"${b}\"")
+              bundles)}}";
         root_dir = helpers.mkRaw rootDirCmd;
       };
-      luaConfig.pre = let
-        java-debug = "${pkgs.vscode-extensions.vscjava.vscode-java-debug}/share/vscode/extensions/vscjava.vscode-java-debug/server";
-        java-test = "${pkgs.vscode-extensions.vscjava.vscode-java-test}/share/vscode/extensions/vscjava.vscode-java-test/server";
-      in ''
-        _M.jdtls = {}
-        _M.jdtls.bundles = {
-            vim.fn.glob("${java-debug}" .. "/*.jar"),
-        }
-
-        local java_test_bundle = vim.split(vim.fn.glob("${java-test}" .. "/*.jar", true), "\n")
-
-        if java_test_bundle[1] ~= "" then
-            vim.list_extend(_M.jdtls.bundles, java_test_bundle)
-        end
-      '';
     };
 
     dap.configurations.java = [

@@ -11,13 +11,21 @@ local snippets = {
 		name = "Format string",
 		dscr = "Format string",
 	}, fmta([[String.format("<text>", <args>)<finish>]], { text = i(1), args = i(2), finish = i(0) })),
+
 	s({
 		trig = "printf",
 		name = "Printf",
 		dscr = "Println with a format string.",
-	}, fmta([[System.out.printf("<text>", <args>))<finish>]], { text = i(1), args = i(2), finish = i(0) })),
+	}, fmta([[System.out.printf("<text>\n", <args>)<finish>]], { text = i(1), args = i(2), finish = i(0) })),
 }
 
-local autosnippets = {}
+local autosnippets = {
+
+	s({
+		trig = ";todo",
+		name = "TODO exception",
+		dscr = "Throw a RuntimeException with a TODO message",
+	}, t([[throw new RuntimeException("TODO: not implemented");]])),
+}
 
 return snippets, autosnippets
