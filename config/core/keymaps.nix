@@ -140,4 +140,20 @@
       options.desc = "Move cursor to middle and open folds after search";
     }
   ];
+
+  # ---   Quickfix List navigation   ---
+  autoCmd = [
+    {
+      desc = "Keymaps for the quickfix list buffer";
+      event = "FileType";
+      pattern = "qf";
+      group = "dlaing";
+      callback = helpers.mkRaw ''
+        function()
+          vim.keymap.set('n', 'j', 'j<Enter>zz<C-W>p', { buffer = 0 })
+          vim.keymap.set('n', 'k', 'k<Enter>zz<C-W>p', { buffer = 0 })
+        end
+      '';
+    }
+  ];
 }
