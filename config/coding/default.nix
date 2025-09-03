@@ -87,9 +87,4 @@
   plugins.vim-surround = {
     enable = true;
   };
-
-  # ---   CSV   ---
-  plugins.csvview = {
-    enable = true;
-  };
 }

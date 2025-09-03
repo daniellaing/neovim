@@ -1,0 +1,7 @@
+{
+  plugins = {
+    csvview = {
+      enable = true;
+    };
+  };
+}
