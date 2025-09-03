@@ -20,12 +20,20 @@ local snippets = {
 }
 
 local autosnippets = {
-
-	s({
-		trig = ";todo",
-		name = "TODO exception",
-		dscr = "Throw a RuntimeException with a TODO message",
-	}, t([[throw new RuntimeException("TODO: not implemented");]])),
+	s(
+		{
+			trig = ";todo",
+			name = "TODO exception",
+			dscr = "Throw a RuntimeException with a TODO message",
+		},
+		fmta(
+			[[
+            // TODO: <msg>
+            throw new RuntimeException("TODO: <msgrep>");<finish>
+            ]],
+			{ msg = i(1, "not implemented"), msgrep = extras.rep(1), finish = i(0) }
+		)
+	),
 }
 
 return snippets, autosnippets
