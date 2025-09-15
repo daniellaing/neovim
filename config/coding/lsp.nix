@@ -8,10 +8,7 @@
   };
 
   plugins = {
-    lsp = {
-      enable = true;
-      inlayHints = true;
-    };
+    lspconfig.enable = true;
     lspkind.enable = true;
   };
 

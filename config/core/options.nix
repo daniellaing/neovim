@@ -15,6 +15,10 @@ in {
   };
 
   opts = {
+    # Put your mouse in the bin
+    mouse = "";
+    mousescroll = "ver:0,hor:0";
+
     # Numbers
     number = true;
     relativenumber = true;
