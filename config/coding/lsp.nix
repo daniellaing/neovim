@@ -1,7 +1,7 @@
 {lib, ...}: {
   lsp = {
     inlayHints.enable = true;
-    servers."*".settings = {
+    servers."*".config = {
       root_markers = [".git" ".svn"];
       capabilities.textDocument.semanticTokens.multilineTokenSupport = true;
     };
