@@ -11,7 +11,7 @@
 
     jdtls = let
       inherit (pkgs.lib) hasSuffix;
-      rootDirCmd = ''vim.fs.root(0, { ".git", "mvnw", "gradelw", "devshell.toml"})'';
+      rootDirCmd = ''vim.fs.root(0, { ".git", "mvnw", "gradelw", "devshell.toml", ".svn"})'';
       java-debug = "${pkgs.vscode-extensions.vscjava.vscode-java-debug}/share/vscode/extensions/vscjava.vscode-java-debug";
       java-test = "${pkgs.vscode-extensions.vscjava.vscode-java-test}/share/vscode/extensions/vscjava.vscode-java-test";
       getJars = plugin: map (jar: "${plugin}/server/${jar}") (builtins.attrNames (builtins.readDir "${plugin}/server"));
