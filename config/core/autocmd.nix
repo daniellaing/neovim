@@ -1,4 +1,4 @@
-{helpers, ...}: {
+{lib, ...}: {
   autoGroups = {
     dlaing = {
       clear = true;
@@ -10,7 +10,7 @@
       event = "FileType";
       group = "dlaing";
       desc = "Set folding method. If a treesitter parser for filetype exists, use that.";
-      callback = helpers.mkRaw ''
+      callback = lib.nixvim.mkRaw ''
         function()
             if require("nvim-treesitter.parsers").has_parser() then
                 -- Use treesitter folding
@@ -32,7 +32,7 @@
     }
     {
       event = "TextYankPost";
-      callback = helpers.mkRaw "function() vim.highlight.on_yank() end";
+      callback = lib.nixvim.mkRaw "function() vim.highlight.on_yank() end";
       group = "dlaing";
       desc = "Highlight text on yank";
     }
@@ -47,7 +47,7 @@
       event = "TermOpen";
       group = "dlaing";
       desc = "Clean up built in terminal";
-      callback = helpers.mkRaw ''
+      callback = lib.nixvim.mkRaw ''
         function()
           vim.wo.spell = false
           vim.wo.cursorline = false

@@ -1,4 +1,4 @@
-{helpers, ...}: {
+{lib, ...}: {
   keymaps = [
     # Buffer navigation
     {
@@ -18,7 +18,7 @@
     }
     {
       key = "bx";
-      action = helpers.mkRaw "function()
+      action = lib.nixvim.mkRaw "function()
         vim.cmd.write()
         vim.cmd.bdelete()
       end";
@@ -148,7 +148,7 @@
       event = "FileType";
       pattern = "qf";
       group = "dlaing";
-      callback = helpers.mkRaw ''
+      callback = lib.nixvim.mkRaw ''
         function()
           vim.keymap.set('n', 'j', 'j<Enter>zz<C-W>p', { buffer = 0 })
           vim.keymap.set('n', 'k', 'k<Enter>zz<C-W>p', { buffer = 0 })

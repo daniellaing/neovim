@@ -1,13 +1,12 @@
 {
   lib,
-  helpers,
   pkgs,
   ...
 }: {
   # lsp.servers.jdtls.enable = true;
   plugins = {
     conform-nvim.settings.formatters_by_ft.java = ["google-java-format"];
-    lint.lintersByFt.java = ["checkstyle"];
+    # lint.lintersByFt.java = ["checkstyle"];
 
     jdtls = let
       inherit (pkgs.lib) hasSuffix;
@@ -24,15 +23,15 @@
         cmd = [
           (lib.getExe pkgs.jdt-language-server)
           "-data"
-          (helpers.mkRaw ''vim.fn.stdpath 'cache' .. '/jdtls/' .. vim.fn.fnamemodify(${rootDirCmd}, ':t')'')
+          (lib.nixvim.mkRaw ''vim.fn.stdpath 'cache' .. '/jdtls/' .. vim.fn.fnamemodify(${rootDirCmd}, ':t')'')
           "-configuration"
-          (helpers.mkRaw ''vim.fn.stdpath 'cache' .. "/jdtls/config"'')
+          (lib.nixvim.mkRaw ''vim.fn.stdpath 'cache' .. "/jdtls/config"'')
         ];
 
         init_options.bundles =
-          helpers.mkRaw "{${builtins.concatStringsSep "," (builtins.map (b: "\"${b}\"")
+          lib.nixvim.mkRaw "{${builtins.concatStringsSep "," (builtins.map (b: "\"${b}\"")
               bundles)}}";
-        root_dir = helpers.mkRaw rootDirCmd;
+        root_dir = lib.nixvim.mkRaw rootDirCmd;
       };
     };
 
@@ -62,7 +61,7 @@
       desc = "Set tab size to 2 for java files";
       group = "dlaing";
       pattern = "java";
-      callback = helpers.mkRaw ''
+      callback = lib.nixvim.mkRaw ''
         function()
             vim.opt_local.tabstop = 2
             vim.opt_local.softtabstop = 2

@@ -1,6 +1,6 @@
 {
   pkgs,
-  helpers,
+  lib,
   ...
 }: {
   # ---   Lua Line   ---
@@ -19,7 +19,7 @@
         "progress"
         "location"
       ];
-      lualine_z = [{__unkeyed-1 = helpers.mkRaw ''function() return os.date("%H:%M:%S") end'';}];
+      lualine_z = [{__unkeyed-1 = lib.nixvim.mkRaw ''function() return os.date("%H:%M:%S") end'';}];
     };
   };
 
@@ -28,7 +28,7 @@
     enable = true;
     settings = {
       background_colour = "#000000";
-      on_open = helpers.mkRaw ''
+      on_open = lib.nixvim.mkRaw ''
         function(win)
           local buf = vim.api.nvim_win_get_buf(win)
           vim.api.nvim_buf_set_option(buf, "filetype", "markdown")
@@ -41,7 +41,7 @@
   keymaps = [
     {
       key = "<Leader>dn";
-      action = helpers.mkRaw "function() require('notify').dismiss({ silent = true, pending = true }) end";
+      action = lib.nixvim.mkRaw "function() require('notify').dismiss({ silent = true, pending = true }) end";
       options.desc = "Dismiss all notifications";
     }
   ];

@@ -1,6 +1,6 @@
 {
   pkgs,
-  helpers,
+  lib,
   ...
 }: {
   lsp.servers = {
@@ -18,7 +18,7 @@
       desc = "Set tab size to 2 for nix files";
       group = "dlaing";
       pattern = "nix";
-      callback = helpers.mkRaw ''
+      callback = lib.nixvim.mkRaw ''
         function()
             vim.opt_local.tabstop = 2
             vim.opt_local.softtabstop = 2

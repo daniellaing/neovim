@@ -1,7 +1,6 @@
 {
   pkgs,
   lib,
-  helpers,
   ...
 }: {
   lsp.servers.lemminx.enable = true;
@@ -16,10 +15,10 @@
       desc = "Set tab size to 1 for xml files";
       group = "dlaing";
       pattern = ["xml" "xsd"];
-      callback = helpers.mkRaw ''
+      callback = lib.nixvim.mkRaw ''
         function()
-            vim.opt_local.tabstop = 1
-            vim.opt_local.softtabstop = 1
+            vim.opt_local.tabstop = 2
+            vim.opt_local.softtabstop = 2
         end
       '';
     }
