@@ -1,4 +1,8 @@
-{lib, ...}: {
+{
+  lib,
+  pkgs,
+  ...
+}: {
   lsp.servers.clangd = {
     enable = true;
     package = null;
@@ -22,14 +26,21 @@
       desc = "Set C specifict configuration";
       group = "dlaing";
       pattern = "c";
-      callback = lib.nixvim.mkRaw ''
-        function()
-            vim.opt_local.tabstop = 2
-            vim.opt_local.softtabstop = 2
+      callback = let
+        nix-locate = "${pkgs.nix-index}/bin/nix-locate";
+      in
+        lib.nixvim.mkRaw ''
+          function()
+              local check = function(pkg) require('missing').check_installed(pkg, "${nix-locate}") end
+              check 'clangd'
+              check 'clang-format'
 
-            vim.g.c_syntax_for_h = 1
-        end
-      '';
+              vim.opt_local.tabstop = 2
+              vim.opt_local.softtabstop = 2
+
+              vim.g.c_syntax_for_h = 1
+          end
+        '';
     }
   ];
 }
