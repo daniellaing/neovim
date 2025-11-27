@@ -13,6 +13,8 @@
     ]
     ++ lib.filter (n: lib.strings.hasSuffix ".nix" n) (lib.filesystem.listFilesRecursive ./filetype);
 
+  extraFiles."lua/missing.lua".source = ./lua/missing.lua;
+
   performance = {
     byteCompileLua = {
       enable = true;
