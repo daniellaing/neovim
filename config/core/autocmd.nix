@@ -7,24 +7,6 @@
 
   autoCmd = [
     {
-      event = "FileType";
-      group = "dlaing";
-      desc = "Set folding method. If a treesitter parser for filetype exists, use that.";
-      callback = lib.nixvim.mkRaw ''
-        function()
-            if require("nvim-treesitter.parsers").has_parser() then
-                -- Use treesitter folding
-                vim.opt.foldmethod = "expr"
-                vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-            else
-                -- Use syntax folding
-                vim.opt.foldmethod = "syntax"
-            end
-        end
-      '';
-    }
-
-    {
       event = "BufWritePre";
       command = "%s/\\s\\+$//e";
       group = "dlaing";
