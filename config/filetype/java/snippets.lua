@@ -29,6 +29,7 @@ local autosnippets = {
 		fmta(
 			[[
             // TODO: <msg>
+            if (true)
             throw new RuntimeException("TODO: <msgrep>");<finish>
             ]],
 			{ msg = i(1, "not implemented"), msgrep = extras.rep(1), finish = i(0) }
