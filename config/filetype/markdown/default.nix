@@ -1,5 +1,5 @@
 {pkgs, ...}: let
-  mdf = pkgs.mdformat.withPlugins (ps: with ps; [mdformat-gfm]);
+  mdf = pkgs.mdformat.withPlugins (ps: with ps; [mdformat-gfm mdformat-footnote]);
 in {
   lsp.servers.marksman.enable = true;
   plugins = {
