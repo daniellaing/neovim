@@ -22,9 +22,7 @@
     nixvim,
     flake-parts,
     ...
-  } @ inputs: let
-    config = import ./config; # import the module directly
-  in
+  } @ inputs:
     flake-parts.lib.mkFlake {inherit inputs;} {
       systems = [
         "x86_64-linux"
@@ -38,11 +36,9 @@
         system,
         ...
       }: let
-        nixvimLib = nixvim.lib.${system};
-        nixvim' = nixvim.legacyPackages.${system};
-        nvim = nixvim'.makeNixvimWithModule {
-          inherit pkgs;
-          module = config;
+        nvim = nixvim.lib.evalNixvim {
+          inherit system;
+          modules = [{nixpkgs.source = inputs.nixpkgs;} ./config];
           # You can use `extraSpecialArgs` to pass additional arguments to your module files
           extraSpecialArgs = {
             root = ./.;
@@ -58,15 +54,12 @@
 
         checks = {
           # Run `nix flake check .` to verify that your config is not broken
-          default = nixvimLib.check.mkTestDerivationFromNvim {
-            inherit nvim;
-            name = "A nixvim configuration";
-          };
+          default = nvim.config.build.test;
         };
 
         packages = {
           # Lets you run `nix run .` to start nixvim
-          default = nvim;
+          default = nvim.config.build.package;
         };
 
         formatter = pkgs.alejandra;
