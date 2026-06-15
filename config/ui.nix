@@ -47,7 +47,7 @@
   ];
 
   # ---   Dressing   ---
-  extraPackages = with pkgs.vimPlugins; [
+  extraPlugins = with pkgs.vimPlugins; [
     dressing-nvim
   ];
 }
