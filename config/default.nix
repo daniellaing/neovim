@@ -15,6 +15,8 @@
 
   extraFiles."lua/missing.lua".source = ./lua/missing.lua;
 
+  plugins.lz-n.enable = true;
+
   performance = {
     byteCompileLua = {
       enable = true;
